@@ -1,0 +1,17 @@
+{
+  "shadows/apotheosis/ench/enchantments/IcyThornsEnchant": {
+    "0-all-enabled": false
+  },
+  "mob_grinding_utils/mixin/ZombieMixin": {
+    "hurtMixin": false
+  },
+  "mob_grinding_utils/MobGrindingUtils": {
+    "effectApplicable": false
+  },
+  "mob_grinding_utils/events/EntityHeadDropEvent": {
+    "dropEvent": false
+  },
+  "dev/shadowsoffire/apotheosis/tiers/WorldTier": {
+    "getTier": false
+  }
+}
