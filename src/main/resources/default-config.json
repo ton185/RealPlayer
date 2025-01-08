@@ -13,5 +13,17 @@
   },
   "dev/shadowsoffire/apotheosis/tiers/WorldTier": {
     "getTier": false
+  },
+  "dev/ftb/mods/ftbchunks/FTBChunks": {
+    "0-all-enabled": true,
+    "enterSection": true
+  },
+  "dev/ftb/mods/ftbchunks/data/ClaimedChunkManagerImpl": {
+    "0-all-enabled": true,
+    "shouldPreventInteraction": false
+  },
+  "dev/ftb/mods/ftbchunks/data/ChunkTeamDataImpl": {
+    "0-all-enabled": true,
+    "canPlayerUse": false
   }
 }
