@@ -25,5 +25,9 @@
   "dev/ftb/mods/ftbchunks/data/ChunkTeamDataImpl": {
     "0-all-enabled": true,
     "canPlayerUse": false
+  },
+  "dev/architectury/hooks/level/entity/forge/PlayerHooksImpl": {
+    "0-all-enabled": true,
+    "isFake": false
   }
 }
