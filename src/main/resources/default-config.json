@@ -15,19 +15,15 @@
     "getTier": false
   },
   "dev/ftb/mods/ftbchunks/FTBChunks": {
-    "0-all-enabled": true,
-    "enterSection": true
+    "enterSection": false
   },
   "dev/ftb/mods/ftbchunks/data/ClaimedChunkManagerImpl": {
-    "0-all-enabled": true,
     "shouldPreventInteraction": false
   },
   "dev/ftb/mods/ftbchunks/data/ChunkTeamDataImpl": {
-    "0-all-enabled": true,
     "canPlayerUse": false
   },
   "dev/architectury/hooks/level/entity/forge/PlayerHooksImpl": {
-    "0-all-enabled": true,
     "isFake": false
   }
 }
