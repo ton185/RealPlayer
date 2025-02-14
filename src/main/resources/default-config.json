@@ -25,5 +25,20 @@
   },
   "dev/architectury/hooks/level/entity/forge/PlayerHooksImpl": {
     "isFake": false
+  },
+  "dev/ftb/mods/ftbquests/util/FTBQuestsInventoryListener": {
+    "0-all-enabled": false
+  },
+  "dev/ftb/mods/ftbquests/forge/FTBQuestsForge": {
+    "0-all-enabled": false
+  },
+  "dev/ftb/mods/ftbquests/quest/task/StageTask": {
+    "0-all-enabled": false
+  },
+  "dev/ftb/mods/ftbquests/FTBQuestsEventHandler": {
+    "0-all-enabled": false
+  },
+  "dev/ftb/mods/ftbquests/block/entity/DetectorBlockEntity": {
+    "0-all-enabled": false
   }
 }
