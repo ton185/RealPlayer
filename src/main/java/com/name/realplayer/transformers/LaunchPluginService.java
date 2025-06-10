@@ -28,23 +28,21 @@ public class LaunchPluginService implements ILaunchPluginService {
     // tested on: 1.16.5 Forge, 1.19.2 Forge, 1.21.1 NeoForge
     @Override
     public int processClassWithFlags(Phase phase, ClassNode classNode, Type classType, String reason) {
-
+        if (!Config.isPatchingEnabledForClassAndMethod(classNode.name, "0-all-enabled")) return ComputeFlags.NO_REWRITE;
+        
         boolean rewrite = false;
+        
         for (MethodNode method : classNode.methods) {
             for (AbstractInsnNode instruction : method.instructions) {
                 if (instruction.getOpcode() == Opcodes.INSTANCEOF && instruction instanceof TypeInsnNode && (((TypeInsnNode) instruction).desc.equals("net/minecraftforge/common/util/FakePlayer") || ((TypeInsnNode) instruction).desc.equals("net/neoforged/neoforge/common/util/FakePlayer"))) {
-                    if (!Config.isPatchingEnabledForClassAndMethod(classNode.name, "0-all-enabled"))
-                        return ComputeFlags.NO_REWRITE;
                     if (!Config.isPatchingEnabledForClassAndMethod(classNode.name, method.name)) {
                         RealPlayer.LOGGER.info("Skipping FakePlayer check in class {} method {}: disabled in config", classNode.name, method.name);
                         continue;
                     }
                     RealPlayer.LOGGER.info("Disabling FakePlayer check in class {} method {}", classNode.name, method.name);
-                    ((TypeInsnNode) instruction).desc = "com/name/realplayer/core/DummyClass"; // essentially just make it always false
+                    ((TypeInsnNode) instruction).desc = "java/lang/Boolean"; // Boolean can't be extended so this should always return false. I am using a java class here because using com/name/realplayer/core/DummyClass doesn't work sometimes
                     rewrite = true;
                 } else if (instruction.getOpcode() == Opcodes.INVOKESTATIC && instruction instanceof MethodInsnNode && ((MethodInsnNode) instruction).name.equals("isFake") && ((MethodInsnNode) instruction).desc.contains("Player") && ((MethodInsnNode) instruction).desc.endsWith("Z") && ((MethodInsnNode) instruction).owner.equals("dev/architectury/hooks/level/entity/PlayerHooks")) {
-                    if (!Config.isPatchingEnabledForClassAndMethod(classNode.name, "0-all-enabled"))
-                        return ComputeFlags.NO_REWRITE;
                     if (!Config.isPatchingEnabledForClassAndMethod(classNode.name, method.name)) {
                         RealPlayer.LOGGER.info("Skipping Architectury FakePlayer check in class {} method {}: disabled in config", classNode.name, method.name);
                         continue;
@@ -56,6 +54,7 @@ public class LaunchPluginService implements ILaunchPluginService {
                 }
             }
         }
+        
         return rewrite ? ComputeFlags.SIMPLE_REWRITE : ComputeFlags.NO_REWRITE;
     }
 }
