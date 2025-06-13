@@ -40,5 +40,10 @@
   },
   "dev/ftb/mods/ftbquests/block/entity/DetectorBlockEntity": {
     "0-all-enabled": false
+  },
+  "ovh/corail/tombstone/helper/EntityHelper": {
+    "0-all-enabled": true,
+    "checkUnconventionalFakePlayer": false,
+    "isFakePlayer": false
   }
 }
